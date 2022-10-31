@@ -1,0 +1,8 @@
+data
+__pycache__
+.vscode
+y1_output
+y2_output
+check.ipynb
+wandb
+yaml
