@@ -24,8 +24,8 @@ class customDataset(Dataset):
         self.target = target
     
     def __getitem__(self, idx):
-        x_data = torch.FloatTensor(self.data.loc[idx].to_numpy())
-        y_data = torch.FloatTensor(self.target.loc[idx].to_numpy())
+        x_data = torch.FloatTensor(self.data.iloc[idx, 1:].to_numpy())
+        y_data = torch.FloatTensor(self.target.iloc[idx, 1:].to_numpy())
 
         return x_data, y_data
     

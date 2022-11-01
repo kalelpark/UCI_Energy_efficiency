@@ -13,7 +13,7 @@ import math
 import torch.nn.init as nn_init
 import torch
 import torch.nn.functional as F
-from .common import *
+import typing as ty
 
 """
     Model for FTTransformer
@@ -370,4 +370,4 @@ class Transformer(nn.Module):
             x = self.last_normalization(x)
         x = self.last_activation(x)
         x = self.head(x)
-        return 
+        return x

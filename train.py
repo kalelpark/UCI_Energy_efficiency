@@ -35,8 +35,8 @@ def model_train(args : ty.Any, config: ty.Dict[str, ty.List[str]]) -> None:
             
 def run(model, train_dataloader, test_dataloader, args, config, count):
     
-    wandb.init( name = config["model"] + "_" + str(count), 
-                project = "energy efficiency" + "_" + str(args.target))
+    wandb.init( name = config["model"] + "_700_" + str(count), 
+                project = "energy efficiency" + "_" + str(args.target), reinit = True)
 
     model.to(args.device)
     model = nn.DataParallel(model)
@@ -58,12 +58,10 @@ def run(model, train_dataloader, test_dataloader, args, config, count):
         model.train()       # Train DataLoader
         for X_data, y_label in train_dataloader:        # Train
             optimizer.zero_grad()
-
             X_data, y_label = X_data.to(args.device), y_label.to(args.device)
             y_pred = model(x_num = X_data, x_cat = None)
-
             if args.task == "regression":
-                loss = loss_fn(y_pred.to(torch.float64).squeeze(1), y_label.to(torch.float64))
+                loss = loss_fn(y_pred.to(torch.float64).squeeze(1), y_label.to(torch.float64).squeeze(1))
             else:
                 pass
 
