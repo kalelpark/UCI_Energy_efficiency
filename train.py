@@ -18,6 +18,8 @@ def model_train(args : ty.Any, config: ty.Dict[str, ty.List[str]]) -> None:
     check yaml, main file
     """
 
+    # scp /Users/qkrdnjsrl/downloads/chart.png psboys@202.30.30.19:/home/psboys/private/Research/report/
+
     seed_everything(0)
     X_data, target = load_dataset(args)
     kf = KFold(n_splits = 5, shuffle = True, random_state = 0)

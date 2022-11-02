@@ -10,7 +10,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim
-from torch import Tensor
+from torch import Tensㅠor
 from .fttransformer import Transformer
 
 def load_model(args, config):
